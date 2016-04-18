@@ -186,7 +186,7 @@ def  plotting_svm(predicted, test_labels, name,clr):
     plt.ylim(-1, 2)
     plt.plot(step, predicted, drawstyle = 'step',color=clr)
     plt.savefig(name)
-    plt.close
+    plt.close()
 
 
 
