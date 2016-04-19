@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[69]:
+# In[222]:
 
 import numpy
 import csv
@@ -17,7 +17,7 @@ from pybrain.structure.modules import *
 #%matplotlib inline
 
 
-# In[70]:
+# In[223]:
 
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
@@ -25,7 +25,7 @@ def multiple_days_forward(data, days):
     return data, labels
 
 
-# In[90]:
+# In[224]:
 
 data = list()
 print "Enter Company/Stock: "
@@ -38,7 +38,7 @@ print "6. Reliance"
 case = int(input())
 
 
-# In[91]:
+# In[225]:
 
 if case == 1:
     url = 'E:\Lecs\IIIT\SMAI\Project\Data\\Nifty.csv'
@@ -66,31 +66,31 @@ print numpy.shape(labels)
 print numpy.shape(data)
 
 
-# In[92]:
+# In[226]:
 
 def t_high(t, X):
     return max(X[:-t])
 
 
-# In[93]:
+# In[227]:
 
 def t_low(t, X):
     return min(X[:-t])
 
 
-# In[94]:
+# In[228]:
 
 def volume_high(t, X):
     return max(X[:-t])
 
 
-# In[95]:
+# In[229]:
 
 def volume_low(t, X):
     return min(X[:-t])
 
 
-# In[96]:
+# In[230]:
 
 def extract_features(data, indices):
     #remove the volume feature because of 0's
@@ -113,7 +113,7 @@ def extract_features(data, indices):
     return features[:, indices], data
 
 
-# In[97]:
+# In[231]:
 
 features, data = extract_features(data, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
 train_features = features[:1000]
@@ -122,13 +122,13 @@ train_labels = labels[:1000]
 test_labels = labels[1000:-1]
 
 
-# In[98]:
+# In[232]:
 
 clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
 clf.fit(train_features, train_labels)
 
 
-# In[99]:
+# In[233]:
 
 predicted = clf.predict(test_features)
 Accuracy = accuracy_score(test_labels, predicted)
@@ -139,7 +139,7 @@ print "Precision: ", Precision
 print "Recall: ", Recall
 
 
-# In[100]:
+# In[234]:
 
 bought_price = list()
 current_holdings = 0
@@ -147,15 +147,15 @@ sell_price = list()
 for i in range(len(predicted)):
     if predicted[i]:
         current_holdings += 1
-        bought_price.append(data[1000+i, 1])
+        bought_price.append(data[1000+(i+1), 0])
     else:
         for j in range(current_holdings):
-            sell_price.append(data[100+i, 1])
+            sell_price.append(data[1000+(i+1), 0])
         current_holdings = 0
 print sum(sell_price) - sum(bought_price)
 
 
-# In[101]:
+# In[235]:
 
 step = numpy.arange(0, len(test_labels))
 plt.subplot(211)
@@ -173,7 +173,7 @@ plt.show()
 #plt.plot(plot_predicted)
 
 
-# In[102]:
+# In[236]:
 
 #net = RecurrentNetwork()
 #net.addInputModule(LinearLayer(3, name = 'in'))
@@ -188,19 +188,19 @@ for i, j in zip(train_features, train_labels):
     ds.addSample(i, j)
 
 
-# In[103]:
+# In[237]:
 
 trainer = BackpropTrainer(net, ds)
 
 
-# In[104]:
+# In[238]:
 
 epochs = 10
 for i in range(epochs):
     trainer.train()
 
 
-# In[105]:
+# In[239]:
 
 predicted = list()
 for i in test_features:
@@ -209,14 +209,14 @@ for i in test_features:
 predicted = numpy.array(predicted)
 
 
-# In[106]:
+# In[240]:
 
 print accuracy_score(test_labels, predicted)
 print recall_score(test_labels, predicted)
 print precision_score(test_labels, predicted)
 
 
-# In[107]:
+# In[241]:
 
 step = numpy.arange(0, len(test_labels))
 plt.subplot(211)
@@ -234,7 +234,7 @@ plt.show()
 #plt.plot(plot_predicted)
 
 
-# In[108]:
+# In[242]:
 
 bought_price = list()
 current_holdings = 0
@@ -242,10 +242,10 @@ sell_price = list()
 for i in range(len(predicted)):
     if predicted[i]:
         current_holdings += 1
-        bought_price.append(data[1000+i, 1])
+        bought_price.append(data[1000+(i+1), 0])
     else:
         for j in range(current_holdings):
-            sell_price.append(data[100+i, 1])
+            sell_price.append(data[1000+(i+1), 0])
         current_holdings = 0
 print sum(sell_price) - sum(bought_price)
 
