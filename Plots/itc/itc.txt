@@ -1,0 +1,27 @@
+chose URL(1) or file(2) :
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Accuracy:  0.795698924731
+Precision Score : 0.72
+Recall Score : 0.878048780488
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open Difference% , Volume Difference%, 
+Accuracy:  0.806451612903
+Precision Score : 0.78
+Recall Score : 0.847826086957
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Open Difference% , Volume Difference%, Open Price Moving Avg
+Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg
+Accuracy:  0.795698924731
+Precision Score : 0.74
+Recall Score : 0.860465116279
+-----------------------------------------------------------------------
