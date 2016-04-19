@@ -192,8 +192,8 @@ def  plotting_svm(predicted, test_labels, name,clr):
 
 
 if __name__ == '__main__':
-    fp1 = open("dataset/itc_18_4.csv", 'a+')
-    fp2= open("dataset/itc_15_4.csv",'r+')
+    fp1 = open("dataset/itc_19_4.csv", 'a+')
+    fp2= open("dataset/itc_18_4.csv",'r+')
     choice=int(input("chose URL(1) or file(2) :"))
     if choice==1:
         timestamp_list, close_list, high_list, low_list, open_price_list, volume_list = read_data(choice,fp1)
