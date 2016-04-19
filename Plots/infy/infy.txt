@@ -1,0 +1,30 @@
+ infy.py 
+chose URL(1) or file(2) :1
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Accuracy:  0.851063829787
+Precision Score : 0.74358974359
+Recall Score : 0.878787878788
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open Difference% , Volume Difference%, 
+Accuracy:  0.86170212766
+Precision Score : 0.846153846154
+Recall Score : 0.825
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Open Difference% , Volume Difference%, Open Price Moving Avg
+Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg
+Accuracy:  0.851063829787
+Precision Score : 0.820512820513
+Recall Score : 0.820512820513
+-----------------------------------------------------------------------
+
