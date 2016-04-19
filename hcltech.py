@@ -159,6 +159,7 @@ def fearure_creation(timestamp_list, close_list, high_list, low_list, open_price
 def svm_rbf(feature, label_list):
 
     length_feature = len(feature)
+    print length_feature
     len_train = int(0.75*length_feature)
     train_feature = feature[0: len_train]
     test_feature = feature[len_train: ]
@@ -191,7 +192,7 @@ def  plotting_svm(predicted, test_labels,name,clr):
 
 
 if __name__ == '__main__':
-    fp1 = open("dataset/hctech_18_4.csv", 'a+')
+    fp1 = open("dataset/hctech_19_4.csv", 'a+')
     fp2= open("dataset/hcltech_15_4.csv",'r+')
     choice=int(input("chose URL(1) or file(2) :"))
     if choice==1:
