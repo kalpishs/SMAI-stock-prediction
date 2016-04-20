@@ -3,8 +3,12 @@ import csv
 import numpy as np
 from sklearn import svm 
 from sklearn.metrics import *
-
 import matplotlib.pyplot as plt
+from pybrain.tools.shortcuts import buildNetwork
+from pybrain.supervised.trainers import BackpropTrainer
+from pybrain.structure import *
+from pybrain.datasets import *
+from pybrain.structure.modules import *
 
 def read_data(passing_for_url,fp):
     all_features = []
@@ -147,12 +151,11 @@ def fearure_creation(timestamp_list, close_list, high_list, low_list, open_price
     volume_change_percentage_list=np.array(volume_change_percentage_list)
     
     feature1 = np.column_stack((open_change_percentage_list, close_change_percentage_list, high_change_percentage_list, low_change_percentage_list, volume_change_percentage_list))  
-    feature2 = np.column_stack((open_change_percentage_list, close_change_percentage_list, high_change_percentage_list, low_change_percentage_list, volume_change_percentage_list, open_diff_percentage_list, volume_diff_percentage_list))
-    
-    feature3 = np.column_stack((open_change_percentage_list, close_change_percentage_list, high_change_percentage_list, low_change_percentage_list, volume_change_percentage_list, open_diff_percentage_list, volume_diff_percentage_list,Open_price_moving_average_list, Close_price_moving_average_list, High_price_moving_average_list, Low_price_moving_average_list))
-    
+    feature2 = np.column_stack((open_change_percentage_list, close_change_percentage_list, high_change_percentage_list, low_change_percentage_list, volume_change_percentage_list, open_diff_percentage_list, volume_diff_percentage_list))  
+    feature3 = np.column_stack((open_change_percentage_list, close_change_percentage_list, high_change_percentage_list, low_change_percentage_list, volume_change_percentage_list, Open_price_moving_average_list, Close_price_moving_average_list, High_price_moving_average_list, Low_price_moving_average_list))  
+    feature4 = np.column_stack((open_change_percentage_list, close_change_percentage_list, high_change_percentage_list, low_change_percentage_list, volume_change_percentage_list, open_diff_percentage_list, volume_diff_percentage_list,Open_price_moving_average_list, Close_price_moving_average_list, High_price_moving_average_list, Low_price_moving_average_list))
     label_list = creating_binary_labels(close_list, open_price_list)
-    return feature1, feature2, feature3, label_list
+    return feature1, feature2, feature3, feature4, label_list
 
 
 
@@ -170,12 +173,12 @@ def svm_rbf(feature, label_list):
     clf = svm.SVC(C=100000,kernel='rbf')
     clf.fit(train_feature, train_label)
     predicted = clf.predict(test_feature)
-    print "Accuracy: ", accuracy_score(predicted, test_label)
-    print "Precision Score :", precision_score(predicted, test_label)
-    print "Recall Score :" ,recall_score(predicted, test_label)
-    return predicted, test_label
+    print "Accuracy: ", accuracy_score(predicted, test_label)*100, "%"
+    print "Precision Score :", precision_score(predicted, test_label)*100, "%"
+    print "Recall Score :" ,recall_score(predicted, test_label)*100, "%"
+    return predicted, test_label, train_feature, train_label, test_feature
 
-def  plotting_svm(predicted, test_labels, name,clr):
+def  plotting_svm(predicted, test_labels,name,clr):
     step = np.arange(0, len(test_labels))
     plt.subplot(211)
     plt.xlim(-1, len(test_labels) + 1)
@@ -188,12 +191,27 @@ def  plotting_svm(predicted, test_labels, name,clr):
     plt.savefig(name)
     plt.close()
 
+def neural_networks(train_feature, train_label, test_features, test_labels):
+    net = buildNetwork(len(train_feature[0]), 30, 1, hiddenclass = TanhLayer, outclass = TanhLayer,recurrent = True)
+    ds = ClassificationDataSet(len(train_feature[0]), 1)
+    for i, j in zip(train_feature, train_label):
+        ds.addSample(i, j)
+    trainer = BackpropTrainer(net, ds)
+    epochs = 13
+    for i in range(epochs):
+        trainer.train()
+    predicted = list()
+    for i in test_features:
+        predicted.append(int(net.activate(i)>0.5))
+    predicted = np.array(predicted)
 
+    print "Accuracy:", accuracy_score(test_labels, predicted)*100, "%"
+    return predicted
 
 
 if __name__ == '__main__':
-    fp1 = open("dataset/itc_19_4.csv", 'a+')
-    fp2= open("dataset/itc_18_4.csv",'r+')
+    fp1 = open("dataset/itc_20_4.csv", 'a+')
+    fp2= open("dataset/itc_try_NN.csv",'r+')
     choice=int(input("chose URL(1) or file(2) :"))
     if choice==1:
         timestamp_list, close_list, high_list, low_list, open_price_list, volume_list = read_data(choice,fp1)
@@ -203,13 +221,12 @@ if __name__ == '__main__':
         fp2.close()
    
     x = 5
-    feature1, feature2, feature3, label_list = fearure_creation(timestamp_list, close_list, high_list, low_list, open_price_list, volume_list, x )
+    feature1, feature2, feature3, feature4, label_list = fearure_creation(timestamp_list, close_list, high_list, low_list, open_price_list, volume_list, x )
     print
     print "-----------------------------------------------------------------------"
     print "SVM - RBF Kernel with Features : "
     print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%"
-    predicted1, test_label1 = svm_rbf(feature1, label_list)
- 
+    predicted1, test_label1, train_feature1, train_label1, test_feature1 = svm_rbf(feature1, label_list)
     print "-----------------------------------------------------------------------"
     
     
@@ -218,7 +235,15 @@ if __name__ == '__main__':
     print "SVM - RBF Kernel with Features : "
     print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,"
     print "Open Difference% , Volume Difference%, "
-    predicted2, test_label2= svm_rbf(feature2, label_list)
+    predicted2, test_label2, train_feature2, train_label2, test_feature2= svm_rbf(feature2, label_list)
+    print "-----------------------------------------------------------------------"
+
+    print
+    print "-----------------------------------------------------------------------"
+    print "SVM - RBF Kernel with Features : "
+    print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,"
+    print "Open MovingAvg, Close MovingAvg, High MovingAvg, Low MovingAvg"
+    predicted3, test_label3, train_feature3, train_label3, test_feature3= svm_rbf(feature3, label_list)
     print "-----------------------------------------------------------------------"
     
     
@@ -228,10 +253,51 @@ if __name__ == '__main__':
     print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%"
     print "Open Difference% , Volume Difference%, Open Price Moving Avg"
     print "Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg"
-    predicted3, test_label3 =  svm_rbf(feature3, label_list)
+    predicted4, test_label4, train_feature4, train_label4, test_feature4 =  svm_rbf(feature4, label_list)
     print "-----------------------------------------------------------------------"
     
-    plotting_svm(predicted1, test_label1, "ITC1_rbf.jpg",'r')
-    plotting_svm(predicted2, test_label2, "ITC2_rbf.jpg",'g')
-    plotting_svm(predicted3, test_label3, "ITC3_rbf.jpg",'b')
+    plotting_svm(predicted1, test_label1,"Plots/itc/itc1_20_apr_rbf.jpg",'r')
+    plotting_svm(predicted2, test_label2,"Plots/itc/itc2_20_apr_rbf.jpg",'g')
+    plotting_svm(predicted3, test_label3,"Plots/itc/itc3_20_apr_rbf.jpg",'b')
+    plotting_svm(predicted4, test_label4,"Plots/itc/itc4_20_apr_rbf.jpg",'y')
+
+    print
+    print "*******************************RNN*************************************"
+    print
+    print "-----------------------------------------------------------------------"
+    #print "SVM - RBF Kernel with Features : "
+    print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%"
+    predicted_NN_1=neural_networks(train_feature1, train_label1, test_feature1, test_label1)
+    print "-----------------------------------------------------------------------"
+
+
+    print
+    print "-----------------------------------------------------------------------"
+    #print "SVM - RBF Kernel with Features : "
+    print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,"
+    print "Open Difference% , Volume Difference%, "
+    predicted_NN_2=neural_networks(train_feature2, train_label2, test_feature2, test_label2)
+    print "-----------------------------------------------------------------------"
+   
+    print
+    print "-----------------------------------------------------------------------"
+    #print "SVM - RBF Kernel with Features : "
+    print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,"
+    print "Open MovingAvg, Close MovingAvg, High MovingAvg, Low MovingAvg"
+    predicted_NN_3=neural_networks(train_feature3, train_label3, test_feature3, test_label3)
+    print "-----------------------------------------------------------------------"
+
+    print
+    print "-----------------------------------------------------------------------"
+    #print "SVM - RBF Kernel with Features : "
+    print "Open Change%, Close Change%, High Change%, Low Change%, Volume Change%"
+    print "Open Difference% , Volume Difference%, Open Price Moving Avg"
+    print "Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg"
+    predicted_NN_4=neural_networks(train_feature4, train_label4, test_feature4, test_label4)
+    print "-----------------------------------------------------------------------"
+   
+    plotting_svm(predicted_NN_1, test_label1,"Plots/itc/itc1_20_apr_NN.jpg",'r')
+    plotting_svm(predicted_NN_2, test_label2,"Plots/itc/itc2_20_apr_NN.jpg",'g')
+    plotting_svm(predicted_NN_2, test_label3,"Plots/itc/itc3_20_apr_NN.jpg",'b')
+    plotting_svm(predicted_NN_2, test_label4,"Plots/itc/itc4_20_apr_NN.jpg",'y')
 
