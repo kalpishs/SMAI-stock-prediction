@@ -136,10 +136,3 @@ In this project we experimented with different feature sets and evaluated their 
 Tags
 ==============================================================================================================================================
 'Information Retrieval and Extraction Course', 'IIIT-H', Major Project', 'Mallet', 'Medical NER', 'Feature Sets', 'Disease', 'Drug', 'Symptom', 'Analysis and Approach'
-
-
-
-:( :( :( 
-tune mujhe fir se daaata 
- :( 
-

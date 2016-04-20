@@ -44,7 +44,7 @@ List of Files
 
 (i) hcltech.py,infy.py,itc.py,ongc.py,reliance.py (Python code to execute the minute Accurcy)
 
-(ii) training_features_5gram.py (main code for constructing feature files)
+(ii) Stock_Prediction_Daily.py (main code for Day wise prediction)
 
 (iii) metamap.py (for extracting semantic tags from Metamap(tool) generated output)
 
@@ -136,10 +136,3 @@ In this project we experimented with different feature sets and evaluated their 
 Tags
 ==============================================================================================================================================
 'Information Retrieval and Extraction Course', 'IIIT-H', Major Project', 'Mallet', 'Medical NER', 'Feature Sets', 'Disease', 'Drug', 'Symptom', 'Analysis and Approach'
-
-
-
-:( :( :( 
-tune mujhe fir se daaata 
- :( 
-
