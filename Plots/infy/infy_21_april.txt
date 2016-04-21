@@ -1,0 +1,40 @@
+python infy.py 
+chose URL(1) or file(2) :1
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Accuracy:  0.787234042553
+Precision Score : 0.761904761905
+Recall Score : 0.761904761905
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open Difference% , Volume Difference%, 
+Accuracy:  0.734042553191
+Precision Score : 0.761904761905
+Recall Score : 0.68085106383
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open MovingAvg, Close MovingAvg, High MovingAvg, Low MovingAvg
+Accuracy:  0.744680851064
+Precision Score : 0.666666666667
+Recall Score : 0.736842105263
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Open Difference% , Volume Difference%, Open Price Moving Avg
+Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg
+Accuracy:  0.691489361702
+Precision Score : 0.714285714286
+Recall Score : 0.63829787234
+-----------------------------------------------------------------------
+***************RNN***************
+Accuracy: 0.468085106383
+Accuracy: 0.446808510638
+Accuracy: 0.468085106383
+Accuracy: 0.670212765957
+
