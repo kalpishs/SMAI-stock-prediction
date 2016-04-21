@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Smai-stock-prediction by kalpishs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Smai-stock-prediction</h1>
+      <h2 class="project-tagline">New prediction algorithm that focus on Indian stock markets to predict the next-minute ,Next Day and Next week stock trend </h2>
+      <a href="https://github.com/kalpishs/SMAI-stock-prediction" class="btn">View on GitHub</a>
+      <a href="https://github.com/kalpishs/SMAI-stock-prediction/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/kalpishs/SMAI-stock-prediction/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <hr>
+
+<p>Mentor: Soham Saha</p>
+
+<p>Project No. : 13</p>
+
+<p>Team Name. : Pi-3.14159265 </p>
+
+<p>By Kalpish Singhal, Megha Agarwal, Narendra Babu, Savalia Tejas</p>
+
+<hr>
+
+<h1></h1>
+
+<h1>
+<a id="stock-treand-forecasting---using---supervised---learning--methods" class="anchor" href="#stock-treand-forecasting---using---supervised---learning--methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stock Treand Forecasting   using   Supervised   Learning  methods</h1>
+
+<p>Prediction of stock market is a long-time attractive topic to researchers from different fields. In particular,numerous studies have been conducted to predict the movement of stock market using machine learning algorithms such as support vector machine (SVM) and reinforcement learning. 
+ In this project, we propose a new prediction algorithm that focus on Indian stock markets to predict the next-minute ,Next Day and Next week stock trend with the aid of SVM &amp; Neural networks. Numerical results indicate a prediction accuracy of 80-85% For Hcltech,77-81% for Itc,69-74% for ONGC ,84-87% for Tcs,for 80-85% infy,81-86% for relliance using per minute prediction. </p>
+
+<h1></h1>
+
+<h1>
+<a id="data-set-used" class="anchor" href="#data-set-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data set Used</h1>
+
+<p>BSE Sensex Dataset is used for all next-minute ,Next Day and Next week predictions using Yahoo finance Api .Online live data for the day is collected and stored for per minute data.We have a dataset from 6 year of daily Stock price of companies like TCS,Infosys,Ongc,Hcl tech,reliance industry.With the following Features.
+-&gt;For miniute data :Timestamp,close,high,low,open,volume
+-&gt;For Daily Data :Date,Open,High,Low,Close,Volume,Adj Close</p>
+
+<h1></h1>
+
+<h1>
+<a id="project-scope" class="anchor" href="#project-scope" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Scope</h1>
+
+<p>This project is mainly focused on feature extraction  of Stock on the set of BSE. This will be divided into following  phases.</p>
+
+<pre><code>(i) Feature Identification and extraction
+
+(ii) Model training using SVM &amp; Neural Networks
+
+(iii) Testing using trained model.
+
+(iv) Evaluating the output obtained for different feature-models using metrics such as Precision, Recall and Accuracy.
+
+(v) Selecting some feature models and plot their Accuracy,Actual V/s predicted binary plot 
+</code></pre>
+
+<h1></h1>
+
+<h1>
+<a id="list-of-files-" class="anchor" href="#list-of-files-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List of Files </h1>
+
+<p>(i) hcltech.py,infy.py,itc.py,ongc.py,reliance.py (Python code to execute the minute Accurcy)</p>
+
+<p>(ii) Stock_Prediction_Daily_noofdays_allcompanies.py (main code for Day wise prediction)</p>
+
+<p>(iii) The Plots folder contains plotted comparisions between predicted and actual trends for minute wise prediction, along with the accuracy change as more data rows are added to the existing dataset in the Real_Time_Accuracy folder </p>
+
+<p>(iv) daily_dataset folder contains the dataset used for inter-day prediction whereas the dataset folder contains the dataset used for intra-day prediction.</p>
+
+<h1></h1>
+
+<h1>
+<a id="how-to-run--" class="anchor" href="#how-to-run--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to Run  </h1>
+
+<p>-&gt;Install Following Tools:</p>
+
+<p>1)Numpy
+2)Matplotlib
+3)Sci-kit learn
+4)PyBrain</p>
+
+<p>To see the results on intra-day training, run individual files, named by companies.
+To see the results on inter-day prediction, run the file Stock_Prediction_Daily_noofdays_allcompanies.py</p>
+
+<h1></h1>
+
+<h1>
+<a id="output-format" class="anchor" href="#output-format" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output FORMAT</h1>
+
+<p>For all files, we get accuracies for 4 sets of features which can be then analysed and the best set can be suggested for prediction in general. 
+we plot two step graphs, one for predicted binary values depicting uptrends and downtrends and the same for the actual values for providing a visual comparision aid.</p>
+
+<h1></h1>
+
+<h1>
+<a id="tags" class="anchor" href="#tags" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tags</h1>
+
+<p>'Statistical Methods in Artificial Intelligence Course', 'IIIT-H', Major Project', 'Stock Prediction', 'SVM', 'Neural Networks', 'Sci-Kit Learn', 'Pybrain', 'Classification on Indian Stocks'</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/kalpishs/SMAI-stock-prediction">Smai-stock-prediction</a> is maintained by <a href="https://github.com/kalpishs">kalpishs</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
