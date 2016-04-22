@@ -183,13 +183,17 @@ def  plotting_svm(predicted, test_labels,name,clr):
     plt.subplot(211)
     plt.xlim(-1, len(test_labels) + 1)
     plt.ylim(-1, 2)
+    plt.ylabel('Actual Values')
     plt.plot(step, test_labels, drawstyle = 'step',color=clr)
     plt.subplot(212)
     plt.xlim(-1, len(test_labels) + 1)
     plt.ylim(-1, 2)
+    plt.xlabel('minutes')
+    plt.ylabel('Predicted Values')
     plt.plot(step, predicted, drawstyle = 'step',color=clr)
     plt.savefig(name)
     plt.close()
+
 
 def neural_networks(train_feature, train_label, test_features, test_labels):
     net = buildNetwork(len(train_feature[0]), 30, 1, hiddenclass =TanhLayer, outclass = TanhLayer,recurrent = True)
@@ -209,9 +213,9 @@ def neural_networks(train_feature, train_label, test_features, test_labels):
     return predicted
 
 if __name__ == '__main__':
-    fp1 = open("dataset/infy_20_4.csv", 'a+')
+    fp1 = open("dataset/infy_22_4.csv", 'a+')
     fp2= open("dataset/infy_3days_NN.csv",'r+')
-    choice=int(input("chose URL(1) or file(2) :"))
+    choice=int(input("choose URL(1) or file(2) :"))
     if choice==1:
         timestamp_list, close_list, high_list, low_list, open_price_list, volume_list = read_data(choice,fp1)
         fp1.close()
@@ -254,10 +258,10 @@ if __name__ == '__main__':
     predicted4, test_label4, train_feature4, train_label4, test_feature4 =  svm_rbf(feature4, label_list)
     print "-----------------------------------------------------------------------"
     
-    plotting_svm(predicted1, test_label1,"Plots/infy/infy1_20_apr_rbf.jpg",'r')
-    plotting_svm(predicted2, test_label2,"Plots/infy/infy2_20_apr_rbf.jpg",'g')
-    plotting_svm(predicted3, test_label3,"Plots/infy/infy3_20_apr_rbf.jpg",'b')
-    plotting_svm(predicted4, test_label4,"Plots/infy/infy4_20_apr_rbf.jpg",'y')
+    plotting_svm(predicted1, test_label1,"Plots/infy/infy1_22_apr_rbf.jpg",'r')
+    plotting_svm(predicted2, test_label2,"Plots/infy/infy2_22_apr_rbf.jpg",'g')
+    plotting_svm(predicted3, test_label3,"Plots/infy/infy3_22_apr_rbf.jpg",'b')
+    plotting_svm(predicted4, test_label4,"Plots/infy/infy4_22_apr_rbf.jpg",'y')
 
     print "***************RNN***************"
     predicted_NN_1=neural_networks(train_feature1, train_label1, test_feature1, test_label1)
@@ -265,7 +269,7 @@ if __name__ == '__main__':
     predicted_NN_3=neural_networks(train_feature3, train_label3, test_feature3, test_label3)
     predicted_NN_4=neural_networks(train_feature4, train_label4, test_feature4, test_label4)
 
-    plotting_svm(predicted_NN_1, test_label1,"Plots/infy/infy1_20_apr_NN.jpg",'r')
-    plotting_svm(predicted_NN_2, test_label2,"Plots/infy/infy2_20_apr_NN.jpg",'g')
-    plotting_svm(predicted_NN_2, test_label3,"Plots/infy/infy3_20_apr_NN.jpg",'b')
-    plotting_svm(predicted_NN_2, test_label4,"Plots/infy/infy4_20_apr_NN.jpg",'y')
+    plotting_svm(predicted_NN_1, test_label1,"Plots/infy/infy1_22_apr_NN.jpg",'r')
+    plotting_svm(predicted_NN_2, test_label2,"Plots/infy/infy2_22_apr_NN.jpg",'g')
+    plotting_svm(predicted_NN_2, test_label3,"Plots/infy/infy3_22_apr_NN.jpg",'b')
+    plotting_svm(predicted_NN_2, test_label4,"Plots/infy/infy4_22_apr_NN.jpg",'y')
