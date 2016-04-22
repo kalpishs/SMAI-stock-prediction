@@ -1,0 +1,64 @@
+chose URL(1) or file(2) :1
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Accuracy:  70.9677419355 %
+Precision Score : 51.0204081633 %
+Recall Score : 89.2857142857 %
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open Difference% , Volume Difference%, 
+Accuracy:  74.1935483871 %
+Precision Score : 67.3469387755 %
+Recall Score : 80.487804878 %
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open MovingAvg, Close MovingAvg, High MovingAvg, Low MovingAvg
+Accuracy:  65.5913978495 %
+Precision Score : 51.0204081633 %
+Recall Score : 75.7575757576 %
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+SVM - RBF Kernel with Features : 
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Open Difference% , Volume Difference%, Open Price Moving Avg
+Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg
+Accuracy:  79.5698924731 %
+Precision Score : 73.4693877551 %
+Recall Score : 85.7142857143 %
+-----------------------------------------------------------------------
+
+*******************************RNN*************************************
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Accuracy: 47.311827957 %
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open Difference% , Volume Difference%, 
+Accuracy: 76.3440860215 %
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open MovingAvg, Close MovingAvg, High MovingAvg, Low MovingAvg
+Accuracy: 52.688172043 %
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Open Difference% , Volume Difference%, Open Price Moving Avg
+Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg
+Accuracy: 78.4946236559 %
+-----------------------------------------------------------------------
+
