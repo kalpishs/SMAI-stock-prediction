@@ -1,0 +1,39 @@
+choose URL(1) or file(2) :1
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Accuracy:  0.787234042553
+Precision Score : 0.71186440678
+Recall Score : 0.933333333333
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open Difference% , Volume Difference%, 
+Accuracy:  0.840425531915
+Precision Score : 0.796610169492
+Recall Score : 0.94
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%,
+Open MovingAvg, Close MovingAvg, High MovingAvg, Low MovingAvg
+Accuracy:  0.808510638298
+Precision Score : 0.762711864407
+Recall Score : 0.918367346939
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Open Change%, Close Change%, High Change%, Low Change%, Volume Change%
+Open Difference% , Volume Difference%, Open Price Moving Avg
+Close Price Moving Avg, High Price Moving Avg, Low Price Moving Avg
+Accuracy:  0.840425531915
+Precision Score : 0.796610169492
+Recall Score : 0.94
+-----------------------------------------------------------------------
+***************RNN***************
+Accuracy: 0.627659574468
+Accuracy: 0.797872340426
+Accuracy: 0.382978723404
+Accuracy: 0.691489361702
+
