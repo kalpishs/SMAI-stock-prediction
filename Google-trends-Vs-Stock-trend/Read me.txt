@@ -1,1 +1,6 @@
-this is ..
+Fundamental Idea:
+          Stock prices reflect the trading decisions of many individuals. For the most part, quantitative finance has develop sophisticated methods that try to predict future trading decisions (and the price) based on past trading decisions. However, what about that the information gathering phase that precedes a trading decision? Yes, before making any buy-sell decision users tend to get information about market movements. google is the predominant tool to gain that information. So we can expect some sort of interrelationship between stock of a company and it's related terms search frequency on google. Considering this; we have ploted the change in closed price and normalized search frequency of several companies on a time axis. As anticipated we can observe co-relation between change in close price and search frequency in the plots.
+
+DATASET:
+        Stock Information has collect using Yahoo finance API
+        Search Information is collected using google trends API (https://www.google.co.in/trends). It allows user to explore a topic and download that information in a csv file format.
